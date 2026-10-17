@@ -1,18 +1,30 @@
 @echo off
+setlocal
 echo ========================================================
 echo       MAVERICK VIPER - GITHUB PUSH ASSISTANT
 echo ========================================================
+echo Target Repo: https://github.com/Tanesh-web/MaverickViper.git
 echo.
-echo Make sure you have created an empty repository on GitHub:
-echo   https://github.com/new
-echo (e.g., name: MaverickViper)
+echo Choose authentication method:
+echo   [1] GitHub Browser Login (Opens your default browser to sign in)
+echo   [2] Paste GitHub Personal Access Token (PAT)
 echo.
-set /p REPO_URL="Enter your GitHub Repository URL (e.g. https://github.com/adityajamge/MaverickViper.git): "
+set /p CHOICE="Enter 1 or 2 (Default is 1): "
 
-if "%REPO_URL%"=="" (
-    echo Error: No URL provided. Aborting.
-    pause
-    exit /b 1
+if "%CHOICE%"=="2" (
+    echo.
+    echo To generate a token: https://github.com/settings/tokens
+    echo Select 'Generate new token (classic)', tick 'repo', and copy the token.
+    echo.
+    set /p TOKEN="Paste your Personal Access Token: "
+    if "%TOKEN%"=="" (
+        echo Error: No token provided.
+        pause
+        exit /b 1
+    )
+    set REPO_URL=https://%TOKEN%@github.com/Tanesh-web/MaverickViper.git
+) else (
+    set REPO_URL=https://github.com/Tanesh-web/MaverickViper.git
 )
 
 echo.
@@ -30,12 +42,14 @@ if %ERRORLEVEL% EQU 0 (
     echo.
     echo ========================================================
     echo  SUCCESS! Your code is now live on GitHub!
+    echo  Check it out at: https://github.com/Tanesh-web/MaverickViper
     echo ========================================================
     echo Next step: Deploy on Render.com or Railway.app
 ) else (
     echo.
     echo ========================================================
-    echo  PUSH FAILED! Check your GitHub login or URL.
+    echo  PUSH FAILED!
+    echo  Make sure you are logged in as 'Tanesh-web'.
     echo ========================================================
 )
 pause
