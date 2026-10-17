@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maverick Viper | Foundations of Digital Business</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #100c10;
+            color: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            width: 100%;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #171017;
+            border-bottom: 1px solid #38202e;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #e63966;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ddd;
+            margin-left: 28px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f04470;
+        }
+
+        .login-btn {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #e63966;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .signup-btn {
+            display: inline-block;
+            background: #d92e5d;
+            border: none;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 6px;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        button:hover,
+        .login-btn:hover,
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .hero {
+            min-height: 570px;
+            padding: 100px 9%;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 85% 45%, #702039 0%, transparent 32%),
+                linear-gradient(120deg, #100c10, #24101b 65%, #3b1426);
+        }
+
+        .hero-content {
+            max-width: 720px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: #ff7798;
+            background: #3b1929;
+            border: 1px solid #77304b;
+            padding: 9px 17px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.15;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #ef416d;
+        }
+
+        .hero p {
+            color: #c5b9c1;
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            background: #df315f;
+            color: white;
+            border: none;
+            padding: 15px 27px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid #9a536d;
+            padding: 14px 27px;
+            border-radius: 6px;
+            margin-left: 12px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #1b141b;
+            padding: 35px 9%;
+            border-top: 1px solid #3b2633;
+            border-bottom: 1px solid #3b2633;
+            text-align: center;
+        }
+
+        .stat h2 {
+            font-size: 29px;
+            color: #f04a75;
+            margin-bottom: 7px;
+        }
+
+        .stat p {
+            color: #b9aeb6;
+            font-size: 14px;
+        }
+
+        section {
+            padding: 85px 9%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .section-title h2 span {
+            color: #e63c68;
+        }
+
+        .section-title p {
+            color: #a99da5;
+            font-size: 15px;
+        }
+
+        .course-box {
+            background: linear-gradient(135deg, #21151f, #321727);
+            border: 1px solid #603047;
+            border-radius: 14px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .course-info {
+            max-width: 700px;
+        }
+
+        .course-info h3 {
+            font-size: 28px;
+            margin: 15px 0;
+        }
+
+        .course-info p {
+            color: #c0b3bc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .course-label {
+            color: #f07897;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .course-icon {
+            font-size: 100px;
+            color: #e63c68;
+            padding: 25px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #1d151d;
+            border: 1px solid #3b2834;
+            border-radius: 12px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: #d83a66;
+        }
+
+        .card-icon {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #afa3ab;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            color: #f05a80;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .cta {
+            text-align: center;
+            background: linear-gradient(120deg, #51182f, #8e2448);
+            border-radius: 15px;
+            padding: 55px 25px;
+        }
+
+        .cta h2 {
+            font-size: 33px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #f0d9e1;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            background: #090709;
+            padding: 35px 9%;
+            text-align: center;
+            border-top: 1px solid #392331;
+        }
+
+        footer h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        footer h3 span {
+            color: #e63c68;
+        }
+
+        footer p {
+            color: #92858e;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        @media(max-width: 850px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .course-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 550px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .hero {
+                padding: 75px 7%;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .stats {
+                padding: 25px 5%;
+            }
+
+            .stat h2 {
+                font-size: 22px;
+            }
+
+            .stat p {
+                font-size: 11px;
+            }
+
+            section {
+                padding: 60px 6%;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .course-box {
+                padding: 25px;
+            }
+
+            .course-icon {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .secondary-btn {
+                margin: 12px 0 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            MAVERICK <span>VIPER.</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#course">Course</a>
+            <a href="#learning">Practice</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div>
+            <a href="admin-login.html" class="login-btn" style="border-color:#641C35; color:#C9AEB8; margin-right:6px;">Admin Portal</a>
+            <a href="login.html" class="login-btn">Student Login</a>
+            <a href="signup.html" class="signup-btn">Sign Up</a>
+        </div>
+    </header>
+
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">
+                NPTEL EXAM PREPARATION PLATFORM
+            </div>
+
+            <h1>
+                Learn Smart.<br>
+                Practice Hard.<br>
+                <span>Score Higher.</span>
+            </h1>
+
+            <p>
+                Welcome to Maverick Viper, your dedicated learning
+                companion for Foundations of Digital Business.
+                Prepare for your NPTEL examination with structured
+                learning, practice questions and mock tests.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="document.getElementById('course').scrollIntoView()">
+                Explore Course →
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="document.getElementById('learning').scrollIntoView()">
+                Start Practicing
+            </button>
+        </div>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <h2>01</h2>
+            <p>Featured Course</p>
+        </div>
+
+        <div class="stat">
+            <h2>Weekly</h2>
+            <p>Structured Learning</p>
+        </div>
+
+        <div class="stat">
+            <h2>24/7</h2>
+            <p>Practice Access</p>
+        </div>
+    </div>
+
+    <section id="course">
+        <div class="section-title">
+            <h2>Featured <span>Course</span></h2>
+            <p>Your journey towards digital business knowledge starts here.</p>
+        </div>
+
+        <div class="course-box">
+            <div class="course-info">
+                <div class="course-label">NPTEL COURSE</div>
+
+                <h3>Foundations of Digital Business</h3>
+
+                <p>
+                    Understand the fundamentals of digital business,
+                    digital transformation, online business models,
+                    digital platforms and emerging technologies.
+                    Strengthen your concepts through topic-wise
+                    questions and examination practice.
+                </p>
+
+                <button class="primary-btn"
+                        onclick="document.getElementById('learning').scrollIntoView()">
+                    View Course →
+                </button>
+            </div>
+
+            <div class="course-icon">◈</div>
+        </div>
+    </section>
+
+    <section id="learning">
+        <div class="section-title">
+            <h2>Prepare <span>Your Way</span></h2>
+            <p>
+                Everything you need to prepare for your NPTEL examination.
+            </p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3>Week-wise Questions</h3>
+                <p>
+                    Practice questions organized according to
+                    individual course weeks and topics.
+                </p>
+                <a href="signup.html">Explore Questions →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Practice Tests</h3>
+                <p>
+                    Test your understanding with instant feedback.
+                    Identify correct and incorrect answers.
+                </p>
+                <a href="signup.html">Start Practice →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⏱️</div>
+                <h3>Mock Examination</h3>
+                <p>
+                    Experience exam-style practice with timed
+                    questions and a complete test environment.
+                </p>
+                <a href="signup.html">Take Mock Test →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Performance Tracking</h3>
+                <p>
+                    Track your scores, review your attempts and
+                    identify topics that need improvement.
+                </p>
+                <a href="signup.html">View Performance →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💡</div>
+                <h3>Instant Answer Feedback</h3>
+                <p>
+                    Get immediate feedback after selecting an answer.
+                    Learn from your mistakes as you practice.
+                </p>
+                <a href="signup.html">Learn More →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏆</div>
+                <h3>All-week Revision</h3>
+                <p>
+                    Revise questions from all course weeks
+                    and prepare for your final examination.
+                </p>
+                <a href="signup.html">Start Revision →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="cta">
+            <h2>Your NPTEL Preparation Starts Here.</h2>
+
+            <p>
+                Build your concepts. Practice consistently.
+                Get ready to perform your best.
+            </p>
+
+            <a href="signup.html" class="primary-btn">
+                Join Maverick Viper →
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <h3>MAVERICK <span>VIPER.</span></h3>
+
+        <p>Your Learning. Your Practice. Your Success.</p>
+
+        <p>
+            NPTEL Foundations of Digital Business Preparation Platform
+        </p>
+
+        <p>© 2026 Maverick Viper. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+

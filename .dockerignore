@@ -1,0 +1,6 @@
+target/
+.git/
+.gitignore
+*.bat
+nb-configuration.xml
+nbproject/

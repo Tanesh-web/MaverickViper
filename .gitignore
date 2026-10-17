@@ -1,0 +1,8 @@
+target/
+*.war
+*.class
+.nb-assembly/
+nbproject/private/
+*.log
+.DS_Store
+Thumbs.db

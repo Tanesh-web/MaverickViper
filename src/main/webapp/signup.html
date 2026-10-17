@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | MAVERICK VIPER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top right, #321A26 0%, #16090F 70%);
+            color: #FFFFFF;
+            padding: 20px;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 460px;
+            background: #24121C;
+            padding: 40px 35px;
+            border: 1px solid #641C35;
+            border-radius: 16px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .logo span {
+            color: #A83250;
+        }
+
+        .course-tag {
+            text-align: center;
+            color: #C9AEB8;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #C9AEB8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+            line-height: 1.4;
+        }
+
+        .alert-error {
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid #DC2626;
+            color: #FCA5A5;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #C9AEB8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 18px;
+            border: 1px solid #641C35;
+            border-radius: 8px;
+            background: #16090F;
+            color: #FFFFFF;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #A83250;
+            box-shadow: 0 0 0 3px rgba(168, 50, 80, 0.25);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #641C35, #A83250);
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(168, 50, 80, 0.3);
+            margin-top: 6px;
+        }
+
+        button:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(168, 50, 80, 0.45);
+        }
+
+        .links {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #C9AEB8;
+        }
+
+        .links a {
+            color: #A83250;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .links a:hover {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        .back-home {
+            display: block;
+            margin-top: 18px;
+            font-size: 13px;
+            color: #C9AEB8;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .back-home:hover {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="signup-container">
+    <div class="logo">MAVERICK <span>VIPER</span></div>
+    <div class="course-tag">Foundation of Digital Business</div>
+
+    <h2>Create Student Account</h2>
+    <p class="subtitle">Join the NPTEL MCQ preparation platform today.</p>
+
+    <div id="alertBox" class="alert"></div>
+
+    <form action="signup" method="post" id="signupForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required autocomplete="name">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required autocomplete="email">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="At least 6 characters" required autocomplete="new-password">
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required autocomplete="new-password">
+
+        <button type="submit">Complete Registration</button>
+    </form>
+
+    <div class="links">
+        Already registered? <a href="login.html">Sign In Here</a>
+    </div>
+
+    <a href="index.html" class="back-home">← Back to Main Website</a>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const alertBox = document.getElementById('alertBox');
+    const err = params.get('error');
+
+    if (err === 'exists') {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'This email is already registered. Please sign in or use another email.';
+        alertBox.style.display = 'block';
+    } else if (err === 'mismatch') {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Passwords do not match. Please try again.';
+        alertBox.style.display = 'block';
+    } else if (err === 'short_password') {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Password must be at least 6 characters long.';
+        alertBox.style.display = 'block';
+    } else if (err === 'invalid_email') {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Please enter a valid email address.';
+        alertBox.style.display = 'block';
+    } else if (err === 'empty') {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Please fill out all fields.';
+        alertBox.style.display = 'block';
+    } else if (err) {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Registration failed. Please try again.';
+        alertBox.style.display = 'block';
+    }
+
+    // Client-side quick check
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        const p1 = document.getElementById('password').value;
+        const p2 = document.getElementById('confirmPassword').value;
+        if (p1 !== p2) {
+            e.preventDefault();
+            alertBox.className = 'alert alert-error';
+            alertBox.textContent = 'Passwords do not match. Please verify.';
+            alertBox.style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>

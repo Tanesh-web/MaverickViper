@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Maverick Viper</title>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #180811;
+        color: white;
+    }
+
+    header {
+        background: #2b101d;
+        padding: 20px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #633047;
+    }
+
+    .logo {
+        color: #ff547c;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .logout {
+        background: #c92857;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .welcome {
+        background: linear-gradient(120deg, #641b3a, #351021);
+        padding: 35px;
+        border-radius: 14px;
+        margin-bottom: 35px;
+    }
+
+    .welcome h1 {
+        margin-bottom: 12px;
+        font-size: 30px;
+    }
+
+    .welcome p {
+        color: #e6c5d2;
+        line-height: 1.6;
+    }
+
+    .section-title {
+        margin-bottom: 20px;
+        font-size: 23px;
+    }
+
+    .course {
+        background: #2b101d;
+        border: 1px solid #633047;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 35px;
+    }
+
+    .course h3 {
+        color: #ff668c;
+        margin-bottom: 12px;
+    }
+
+    .course p {
+        color: #d1b6c2;
+        line-height: 1.6;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: #2b101d;
+        border: 1px solid #633047;
+        padding: 25px;
+        border-radius: 12px;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: #ff547c;
+    }
+
+    .card .icon {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        color: #ff668c;
+        margin-bottom: 12px;
+    }
+
+    .card p {
+        color: #c9aab7;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .card a {
+        display: inline-block;
+        background: #c92857;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        color: #a88b98;
+        margin-top: 50px;
+        border-top: 1px solid #482033;
+    }
+
+    @media (max-width: 600px) {
+        .welcome h1 {
+            font-size: 24px;
+        }
+
+        header {
+            padding: 18px 5%;
+        }
+
+        .logo {
+            font-size: 19px;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+
+<header>
+    <div class="logo">MAVERICK VIPER</div>
+    <a href="logout" class="logout">Logout</a>
+</header>
+
+<div class="container">
+
+    <section class="welcome">
+        <h1>Welcome to Maverick Viper!</h1>
+        <p>Your NPTEL preparation journey starts here.</p>
+        <p>Learn smart, practise regularly and improve your performance.</p>
+    </section>
+
+    <h2 class="section-title">Your Course</h2>
+
+    <section class="course">
+        <h3>Foundations of Digital Business</h3>
+        <p>
+            Prepare for your NPTEL examination with week-wise questions,
+            practice tests and mock examinations.
+        </p>
+    </section>
+
+    <h2 class="section-title">Your Learning Activities</h2>
+
+    <section class="cards">
+
+        <div class="card">
+            <div class="icon">📚</div>
+            <h3>Week-wise Questions</h3>
+            <p>Practise questions from each NPTEL course week.</p>
+            <a href="#">Start Practising</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>Practice Tests</h3>
+            <p>Test your knowledge with topic-based practice tests.</p>
+            <a href="#">Take a Test</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎯</div>
+            <h3>Mock Examination</h3>
+            <p>Attempt a complete mock examination to prepare for NPTEL.</p>
+            <a href="#">Start Mock Exam</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>My Performance</h3>
+            <p>Track your scores, progress and test results.</p>
+            <a href="#">View Results</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔄</div>
+            <h3>All-Week Revision</h3>
+            <p>Revise questions from all course weeks in one place.</p>
+            <a href="#">Revise Now</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Instant Feedback</h3>
+            <p>Understand your answers with immediate feedback.</p>
+            <a href="#">Explore</a>
+        </div>
+
+    </section>
+
+</div>
+
+<footer>
+    © 2026 Maverick Viper | Learn Smart. Practice Hard. Score Higher.
+</footer>
+
+
+</body>
+</html>

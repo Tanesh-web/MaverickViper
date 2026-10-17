@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | MAVERICK VIPER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top right, #321A26 0%, #16090F 70%);
+            color: #FFFFFF;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+            background: #24121C;
+            padding: 40px 35px;
+            border: 1px solid #641C35;
+            border-radius: 16px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            margin-bottom: 6px;
+        }
+
+        .logo span {
+            color: #A83250;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            margin: 0 auto 20px;
+            padding: 4px 14px;
+            background: rgba(168, 50, 80, 0.2);
+            border: 1px solid #A83250;
+            border-radius: 20px;
+            color: #C9AEB8;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .badge-wrapper {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #C9AEB8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+            line-height: 1.4;
+        }
+
+        .alert-error {
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid #DC2626;
+            color: #FCA5A5;
+        }
+
+        .alert-success {
+            background: rgba(22, 163, 74, 0.15);
+            border: 1px solid #16A34A;
+            color: #86EFAC;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #C9AEB8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 16px;
+            margin-bottom: 20px;
+            border: 1px solid #641C35;
+            border-radius: 8px;
+            background: #16090F;
+            color: #FFFFFF;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        input:focus {
+            border-color: #A83250;
+            box-shadow: 0 0 0 3px rgba(168, 50, 80, 0.25);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #641C35, #A83250);
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(168, 50, 80, 0.3);
+        }
+
+        button:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(168, 50, 80, 0.45);
+        }
+
+        .back-home {
+            display: block;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #C9AEB8;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .back-home:hover {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="logo">MAVERICK <span>VIPER</span></div>
+    <div class="badge-wrapper">
+        <span class="admin-badge">Secure Admin Access</span>
+    </div>
+
+    <h2>Administrator Login</h2>
+    <p class="subtitle">Authorized personnel only. Sessions are monitored.</p>
+
+    <div id="alertBox" class="alert"></div>
+
+    <form action="admin-login" method="post">
+        <label for="username">Admin Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter admin username" required autocomplete="username">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter admin password" required autocomplete="current-password">
+
+        <button type="submit">Access Admin Panel</button>
+    </form>
+
+    <a href="index.html" class="back-home">← Back to Main Website</a>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const alertBox = document.getElementById('alertBox');
+
+    if (params.get('logout') === 'true') {
+        alertBox.className = 'alert alert-success';
+        alertBox.textContent = 'Administrator logged out successfully.';
+        alertBox.style.display = 'block';
+    } else if (params.get('error') === 'invalid') {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Invalid administrator credentials.';
+        alertBox.style.display = 'block';
+    } else if (params.get('error') === 'empty') {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Please enter both username and password.';
+        alertBox.style.display = 'block';
+    } else if (params.get('error')) {
+        alertBox.className = 'alert alert-error';
+        alertBox.textContent = 'Login failed. Please verify credentials.';
+        alertBox.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
